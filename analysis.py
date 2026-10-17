@@ -22,8 +22,13 @@ def shape(r, width):
     return r*r*np.exp(-x*x), 2*r*np.exp(-x*x)*(1-x*x)
 
 
-def geometry(t, r, eps, width):
-    f, fp = shape(r, width)
+def monotone_shape(r, width):
+    x=r/width
+    return np.expm1(-x*x), -2*r*np.exp(-x*x)/width**2
+
+
+def geometry(t, r, eps, width, profile=shape):
+    f, fp = profile(r, width)
     tau = t-eps*f
     if tau <= 0:
         raise ValueError("Ray reached the bang surface")
@@ -34,13 +39,13 @@ def geometry(t, r, eps, width):
     return R, rp, drp, ddrp
 
 
-def linear_response(width):
+def linear_response(width, profile=shape):
     """Integrate Eq. (7) at epsilon=0 and convert to equal-distance response."""
     def rhs(r, u):
         q = 1-r/3
         z = q**-2-1
         Z = (2/3)*((1+z)-(1+z)**1.5)
-        f, fp = shape(r, width)
+        f, fp = profile(r, width)
         g = f+r*fp
         A_t, B, B_t = 2/(3*q), 2/(3*q), -2/(9*q**4)
         C_t = 8/(27*q**7)
@@ -58,7 +63,7 @@ def linear_response(width):
         q = 1-r/3
         z = q**-2-1
         Z = (2/3)*((1+z)-(1+z)**1.5)
-        f, _ = shape(r, width)
+        f, _ = profile(r, width)
         R = r*q*q
         Rt = 2*r/(3*q)
         Rr = q*q
@@ -71,10 +76,10 @@ def linear_response(width):
     return np.array(out)
 
 
-def ray(eps, width, rtol=2e-11, atol=2e-13, t0=1.):
+def ray(eps, width, rtol=2e-11, atol=2e-13, t0=1., profile=shape):
     # y=(emission time, redshift, drift per unit observer proper time)
     def rhs(r, y):
-        R, rp, drp, ddrp = geometry(y[0], r, eps, width)
+        R, rp, drp, ddrp = geometry(y[0], r, eps, width, profile)
         return [-rp, (1+y[1])*drp, drp*y[2]+ddrp]
     def stop(r, y):
         return y[1]-1.6
@@ -86,8 +91,8 @@ def ray(eps, width, rtol=2e-11, atol=2e-13, t0=1.):
         raise RuntimeError("Light cone failed to reach z=1.6")
     r = np.linspace(0, sol.t_events[0][0], 3001)
     t, z, drift = sol.sol(r)
-    R = np.array([geometry(ti, ri, eps, width)[0] for ti, ri in zip(t, r)])
-    geo = np.array([geometry(ti, ri, eps, width) for ti, ri in zip(t, r)])
+    R = np.array([geometry(ti, ri, eps, width, profile)[0] for ti, ri in zip(t, r)])
+    geo = np.array([geometry(ti, ri, eps, width, profile) for ti, ri in zip(t, r)])
     rp = geo[:, 1]
     if np.any(rp <= 0) or np.any(np.diff(z) <= 0):
         raise RuntimeError("Shell crossing or non-monotone redshift on the ray")

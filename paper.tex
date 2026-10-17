@@ -6,13 +6,13 @@
 \newcommand{\dd}{\mathrm d}
 \newcommand{\D}{D_{\!L}}
 \newcommand{\tb}{t_{\rm B}}
-\title{Bang-time perturbations and redshift drift in a parabolic LTB model:\\ a reproducible light-cone calculation}
+\title{Bang-time perturbations and redshift drift in LTB cosmology:\\ regularity, distance compensation, and light-cone response}
 \author{Dani Postma (DXN1)\\\small Independent researcher}
-\date{17 October 2026\\\small Preprint, version 1.1}
+\date{17 October 2026\\\small Preprint, version 2.0}
 \begin{document}
 \maketitle
 \begin{abstract}
-We calculate the response of redshift drift to a radially varying bang time in an exactly solvable, parabolic Lema\^itre--Tolman--Bondi (LTB) dust spacetime. The drift is propagated between neighboring light cones rather than inferred from a Friedmann--Lema\^itre--Robertson--Walker (FLRW) endpoint formula. We derive an explicit variational system and compare its response with finite differences. Two smooth, centrally regular bang-time perturbations yield negative equal-luminosity-distance responses at all 15 sampled baseline redshifts $0.1\leq z\leq1.5$; no zero crossing appears in these examples. We quantify how equal-distance and fixed-redshift comparisons differ, and how the FLRW endpoint shortcut misestimates the response. This dimensionless dust example is neither an observational fit nor a uniqueness result. We identify the functional distance compensation, background realism, and physical constraints needed for a cosmological inference.
+We calculate the redshift-drift response to a radially varying bang time in Lema\^itre--Tolman--Bondi (LTB) models by propagating neighboring light cones. An exact parabolic dust solution yields an explicit variational equation and reveals that the initially studied hump-shaped bang-time profiles have shell crossings near the bang for either sign of their amplitude. Replacing them with monotone profiles gives a globally shell-crossing-free expanding parabolic family for positive amplitude. Its equal-distance drift response is positive at all 15 sampled redshifts $0.1\leq z\leq1.5$, opposite to the diagnostic hump profiles. An exact flat $\Lambda$-LTB family with $(\Omega_m,\Omega_\Lambda)=(0.3,0.7)$ gives the same sampled sign. We also derive a linear curvature compensation that enforces $\delta D_L(z)=0$ locally; its center-regular solution grows sharply toward the background angular-distance maximum, where the inverse equation is singular. These are model-family results, not a measurement or a universal sign theorem. The numerical integrations, independent derivative checks, and figures are reproducible.
 \end{abstract}
 
 \section{Scope and relation to earlier work}
@@ -25,7 +25,7 @@ In units $c=G=1$, the LTB metric and evolution equation are
 \end{align}
 Dots and primes denote partial derivatives at fixed $r$ and $t$, respectively. A radial coordinate choice removes one of $M,E,\tb$ as an independent function. A nonconstant $\tb$ represents the decaying mode in the conventional LTB dust mode decomposition~\cite{sussman}; its additive constant sets the time origin. Throughout this paper the mass-coordinate gauge and the profiles below are specified explicitly.
 
-The calculation is organized around five questions. (i) What is the drift of the \emph{same comoving source} when the central observer's clock advances? (ii) Does a bang-time perturbation give the same derivative at fixed redshift and at equal luminosity distance? (iii) Does either of the specified perturbations force a zero crossing? (iv) How large is the error from importing the FLRW endpoint expression into LTB? (v) What further constraints are required before a response can be identified as an observable decaying-mode signal? Equations~\eqref{eq:ray}--\eqref{eq:fixedD} answer the first two mathematically; Secs.~4--6 test the middle questions and delimit the last one.
+The calculation asks five concrete questions: how to propagate the drift of the same source; how comparison at fixed redshift differs from equal distance; whether the response's sign survives changes of bang-time shape and regularity conditions; whether a curvature mode can keep the full distance curve fixed; and whether these effects persist on a matter-plus-$\Lambda$ background. The equations and computed results below answer these questions within precisely stated model families. Observational viability requires a separate fit to early- and late-time data.
 
 \section{Drift on neighboring radial light cones}
 Put $S(r)=\sqrt{1+2E(r)}$, $A=R'/S$, $B=\dot R'/S$, and $C=\ddot R'/S$. On an incoming radial ray from a central, comoving observer at $r=0$, the emission time $t(r)$ and observed redshift $z(r)$ satisfy
@@ -127,19 +127,65 @@ $w$ & exact, fixed $z$ & exact, equal $\D$ & endpoint shortcut, fixed $z$\\\midr
 The linear variational calculation in Appendix~\ref{sec:forcing} agrees with the $h=0.0005$ equal-distance finite difference to at most $4.7\times10^{-8}$ for $w=0.8$ and $6.1\times10^{-8}$ for $w=1.2$ on the grid. Figure~\ref{fig:comparisons} and Table~\ref{tab:z1} make the comparison choice and endpoint-formula error visible rather than hiding them inside a single response curve.
 
 \FloatBarrier
-\section{Questions left open}
-\begin{enumerate}
-\item \emph{Functional distance compensation.} Can $\delta M(r)$ or $\delta E(r)$ be chosen so that $\delta\D(z)=0$ over a continuous redshift interval while retaining a nonzero $\delta Z(z)$? This requires solving the linearized inverse problem with a radial gauge, boundary conditions, and regularity criteria. Equation~\eqref{eq:fixedD} only compares at one distance at a time.
-\item \emph{Profile dependence.} Do any admissible, smooth bang-time profiles generate a robust zero crossing after such compensation? The two $f_w$ examples give a negative answer only for their sampled, uncompensated family. A crossing cannot be claimed universal or excluded universally from these results.
-\item \emph{Physical backgrounds.} How do the response and its sign change in an inhomogeneous growing-mode void or an LTB model with $\Lambda$? A calibrated expansion history and physically allowed profiles are needed before translating the dimensionless derivative into a velocity shift.
-\item \emph{Viability and inference.} What bounds on $\epsilon f_w$ follow from early-time physics, shell-crossing avoidance, and independent observables, and what drift precision remains after marginalizing other LTB functions? Positivity of $R'$ on the sampled past ray alone is not a global regularity proof.
-\end{enumerate}
+\section{Global shell-crossing test and a regular bang-time family}
+For the parabolic solution of Eq.~\eqref{eq:exact}, $R'=\tau^{-1/3}[\tau-2r\tb'(r)/3]$. For an expanding shell with $r>0$, $\tb'>0$ therefore forces $R'=0$ at $\tau=2r\tb'/3>0$, a shell crossing after the local bang. The diagnostic hump $f_w=r^2e^{-(r/w)^2}$ has $f'_w>0$ for $0<r<w$ and $f'_w<0$ for $r>w$. Thus \emph{either nonzero sign} of $\epsilon$ produces shell crossings somewhere in the unbounded model. The negative curves in Figs.~\ref{fig:response} and \ref{fig:comparisons} are valid computations on their sampled light cones but are not globally regular cosmologies.
 
-\section{Interpretation and limitations}
-The present parabolic EdS background has no growing-mode void, dark energy, realistic expansion calibration, observational covariance, or early-Universe consistency test. Bang-time variations can generate strong early-time effects and are constrained by other observations; this manuscript does not estimate allowed amplitudes. The plots give derivatives in chosen dimensionless coordinates, not a predicted velocity drift in cm/s over a survey baseline. A physical forecast needs a calibrated model and nuisance effects, along with a functional distance compensation and a treatment of observational uncertainties. This preprint therefore provides a corrected calculational baseline, not evidence for a detected or uniquely isolatable decaying mode.
+Consider instead the centrally smooth, monotone family
+\begin{equation}
+\tb(r)=\eta f_w^-(r),\qquad f_w^-(r)=-[1-e^{-(r/w)^2}],
+\qquad \eta\geq0,\quad w\in\{0.8,1.2\}.\label{eq:monotone}
+\end{equation}
+Here $\tb'\leq0$, hence $R'=\tau^{2/3}-2r\tb'/(3\tau^{1/3})>0$ at every $r>0$ and $\tau>0$. This proves absence of shell crossings in the expanding parabolic solution, though it does not establish observational viability. The exact variational equation yields a \emph{positive} equal-distance derivative at all 15 sampled redshifts: $[0.002324,2.152592]$ for $w=0.8$ and $[0.001042,1.546575]$ for $w=1.2$. Richardson extrapolation from $\eta=0.001$ and $0.0005$ agrees with the variational result within $2.93\times10^{-7}$ and $1.36\times10^{-7}$, respectively. The original negative response is therefore not stable under an admissible change of perturbation family; neither family has a sampled zero crossing.
+
+\begin{figure}[t]
+\centering\includegraphics[width=.78\linewidth]{results/monotone_response.pdf}
+\caption{Equal-distance drift derivative for the shell-crossing-free parabolic families in Eq.~\eqref{eq:monotone}. The derivative is taken at $\eta=0$ from the physical $\eta\geq0$ side. Positive values at the plotted points do not constitute a theorem for all profiles or redshifts.}\label{fig:monotone}
+\end{figure}
+
+\section{An exact matter-plus-\texorpdfstring{$\Lambda$}{Lambda} background}
+The sign check is repeated in a flat $\Lambda$-LTB subclass with $H_0=1$, $\Omega_m=0.3$, $\Omega_\Lambda=0.7$, $M(r)=\Omega_m r^3/2$, $E=0$, and $\Lambda=3\Omega_\Lambda$. Its exact expanding solution is $R(t,r)=r a(t-\tb(r))$, where
+\begin{equation}
+a(\tau)=\left(\frac{\Omega_m}{\Omega_\Lambda}\right)^{1/3}
+\sinh^{2/3}\!\left(\frac32\sqrt{\Omega_\Lambda}\,\tau\right),\quad
+t_0=\frac{2\operatorname{arsinh}\sqrt{\Omega_\Lambda/\Omega_m}}{3\sqrt{\Omega_\Lambda}}=0.964099\ldots .\label{eq:lambdaa}
+\end{equation}
+For Eq.~\eqref{eq:monotone}, $R'=a-r\tb'\dot a>0$ for every expanding post-bang shell. We use $\dot R'=\dot a-r\tb'\ddot a$ and $\ddot R'=\ddot a-r\tb'\dddot a$ in Eqs.~\eqref{eq:ray} and \eqref{eq:drift}. The homogeneous limit reproduces
+\begin{equation}
+\frac{Z_{\Lambda\mathrm{CDM}}(z)}{H_0}=(1+z)-\sqrt{0.3(1+z)^3+0.7}.\label{eq:lambdacheck}
+\end{equation}
+The maximum absolute error against Eq.~\eqref{eq:lambdacheck} is $2.85\times10^{-11}$ on the grid; neighboring-ray differencing agrees with propagated drift within $3.40\times10^{-11}$. The equal-distance responses remain positive at all 15 points, ranging from $0.000826$ to $2.127014$ ($w=0.8$) and $0.000369$ to $1.440526$ ($w=1.2$), in units of $\partial_\eta(Z/H_0)$. The two-step positive-amplitude extrapolations differ by at most $2.84\times10^{-6}$ and $6.55\times10^{-7}$. Figure~\ref{fig:lambda} shows the calculation. This calibrated \emph{background} is not a fitted inhomogeneous void.
+
+\begin{figure}[t]
+\centering\includegraphics[width=.78\linewidth]{results/lambda_response.pdf}
+\caption{Equal-distance response of the exact flat $\Lambda$-LTB bang-time family. $\eta$ is a dimensionless bang-time amplitude in units $H_0^{-1}$; the plotted derivative is of $Z/H_0$. No observational errors or amplitude constraints are applied.}\label{fig:lambda}
+\end{figure}
+
+\section{Functional distance compensation in the dust model}
+To answer the stronger fixed-distance-\emph{curve} question, set $2E(r)=\eta r^2e(r)$ while holding $M=2r^3/9$ and $\tb=\eta f(r)$. To first order about EdS, the exact evolution equation gives
+\begin{equation}
+R(t,r)=r\left[t^{2/3}+\eta\left(\frac9{20}e(r)t^{4/3}-\frac23 f(r)t^{-1/3}\right)\right]+O(\eta^2).\label{eq:growing}
+\end{equation}
+This makes the curvature (growing) and bang-time (decaying) variations explicit. Write $u_t=\partial_\eta t|_r$, $u_z=\partial_\eta z|_r$, and $q=1-r/3$ on the EdS null cone. Direct substitution into $\delta D_L|_z=0$ reduces the entire distance constraint to
+\begin{equation}
+Q(r)\equiv\frac{2r}{3q^5}[u_t-f(r)]+\frac32(r-1)u_z+\frac{9r}{20}e(r)=0.\label{eq:Q}
+\end{equation}
+At every $0<r<1$ this equation algebraically determines $e$ in terms of the ray variations. Substituting it and its derivative into the variational light-cone equations yields a local initial-value problem. Its coefficient multiplying the solved-for $e'$ is $(r-1)/q$; hence the inversion is singular at $r=1$, where the EdS angular-diameter distance has its maximum ($z=1.25$). A smooth continuation requires an additional compatibility condition there, consistent with known LTB inverse-problem regularity issues~\cite{inverse}.
+
+For the monotone profiles, a center-regular numerical integration to $r=0.98$ enforces $|Q|<6\times10^{-14}$ on the evaluated grid, but the required $e(r)$ grows from $32.58$ at $r=0.9$ to $657.80$ at $r=0.98$ for $w=0.8$ (and $18.59$ to $376.28$ for $w=1.2$). Moving the numerical start radius from $10^{-5}$ to $10^{-6}$ changes the values at $r=0.9$ by less than $2\times10^{-3}$. Figure~\ref{fig:constrained} shows this rapid growth and the associated drift response. Thus a \emph{local} first-order distance compensation exists, but these center-regular solutions do not yield a controlled smooth compensation through the distance maximum in this fixed-$M$ gauge. Near that point $|\eta e|\ll1$ fails for any fixed nonzero $\eta$, so the first-order curve cannot be promoted to a finite-amplitude prediction there. We do not claim a general impossibility theorem for other bang-time functions or gauges.
+
+\begin{figure}[t]
+\centering\includegraphics[width=\linewidth]{results/constrained_response.pdf}
+\caption{Local linear curvature reconstruction enforcing $\delta D_L(z)=0$ for the monotone profiles. Logarithmic vertical axes expose rapid growth toward the EdS distance maximum at $z=1.25$; integration stops at $r=0.98$ ($z=1.206$). Large derivatives near the endpoint violate finite-amplitude perturbative control.}\label{fig:constrained}
+\end{figure}
+
+\FloatBarrier
+\section{Answers and observational limits}
+Within the stated families, the source drift is Eq.~\eqref{eq:drift}, and the fixed-$z$ and equal-$D_L$ responses differ as Eq.~\eqref{eq:fixedD} and Fig.~\ref{fig:comparisons} demonstrate. The diagnostic hump profiles have shell crossings and a negative sampled response; monotone shell-crossing-free profiles give a positive sampled response in both EdS and flat $\Lambda$ backgrounds. No profile-only universal zero crossing follows. Requiring the \emph{whole} distance curve to agree is more restrictive than matching one distance: the explicitly reconstructed curvature mode develops a singular inverse problem near the angular-distance maximum for our profiles.
+
+Global absence of shell crossing does not imply consistency with the CMB, kSZ effect, supernovae, or structure formation. Earlier analyses of general varying-bang-time voids found strong combined constraints~\cite{bull}; significant decaying modes in void models that mimic acceleration are also constrained by CMB spectral distortions~\cite{zibin}. Those results do not supply a numerical bound for the $\Lambda$-LTB profiles specified here without fitting them. Our background calibration is not a data likelihood, and the dimensionless derivatives are not a forecast for a telescope. The concrete conclusion is a reproducible, profile-dependent response and a demonstrated inversion obstruction in the tested gauge, not a detected signal.
 
 \section*{Reproducibility}
-The accompanying \texttt{analysis.py}, dependency list, both vector figures and machine-readable numbers fix every numerical input. Execute \texttt{python analysis.py} followed by \texttt{pdflatex paper.tex} twice. The script checks positive $R'$ and monotonic redshift and distance along each sampled ray, the EdS limit, the two-observer-time derivative and the linear variational result. No observed data or generated artwork enters the result.
+The accompanying \texttt{analysis.py}, \texttt{viable.py}, \texttt{lambda\_model.py}, and \texttt{constrained.py} generate the numerical results and vector figures. Run each script, then \texttt{pdflatex paper.tex} twice. Machine-readable outputs record all grid values. The independent checks cover EdS and flat $\Lambda$CDM limits, neighboring observer times, positive-amplitude convergence, and the variational response. The constrained inverse checks its distance identity and center-start stability. No observed data or generated artwork enters the figures.
 
 \appendix
 \section{Explicit forcing of the bang-time variation}\label{sec:forcing}
@@ -157,10 +203,23 @@ C_t=\frac{8}{27t^{7/3}}.\label{eq:timeforcing}
 \end{equation}
 We integrate Eq.~\eqref{eq:sensitivity} with these forcing terms along Eq.~\eqref{eq:edscone}, then apply Eqs.~\eqref{eq:Dderivs} and \eqref{eq:fixedD}. This analytically differentiated initial-value problem provides a check independent of changing $\epsilon$ in the nonlinear ray integrator. Agreement on the sampled interval tests the implementation; it does not guarantee convergence at arbitrarily high redshift or global absence of shell crossings.
 
+\section{Coefficient of the distance-inversion equation}
+Solving Eq.~\eqref{eq:Q} for the curvature perturbation gives
+\begin{equation}
+e=-\frac{40}{27q^5}(u_t-f)-\frac{10(r-1)}{3r}u_z.\label{eq:solvee}
+\end{equation}
+At fixed $r$, its derivatives with respect to the ray variations are $e_{u_t}=-40/(27q^5)$ and $e_{u_z}=-10(r-1)/(3r)$. In the first two variational equations, the coefficients of $e'$ are respectively $G_t=-9rq^4/20$ and $G_z=3r/(5q)$. Implicit differentiation of Eq.~\eqref{eq:solvee} therefore puts the coefficient
+\begin{equation}
+1-e_{u_t}G_t-e_{u_z}G_z=\frac{r-1}{q}\label{eq:singular}
+\end{equation}
+in front of $e'$. This vanishes at the EdS angular-distance maximum. The reconstruction script evaluates the full right-hand side before division and records the resulting local solution; it does not numerically step across $r=1$.
+
 \begin{thebibliography}{9}
 \bibitem{uzan} J.-P. Uzan, C. Clarkson and G. F. R. Ellis, ``Time Drift of Cosmological Redshifts as a Test of the Copernican Principle,'' \emph{Phys. Rev. Lett.} \textbf{100}, 191303 (2008), \href{https://doi.org/10.1103/PhysRevLett.100.191303}{doi:10.1103/PhysRevLett.100.191303}.
 \bibitem{yoo} C.-M. Yoo, T. Kai and K.-i. Nakao, ``Redshift drift in Lema\^itre--Tolman--Bondi void universes,'' \emph{Phys. Rev. D} \textbf{83}, 043527 (2011), \href{https://doi.org/10.1103/PhysRevD.83.043527}{doi:10.1103/PhysRevD.83.043527}.
 \bibitem{sussman} R. A. Sussman, ``Invariant characterization of the growing and decaying density modes in LTB dust models,'' arXiv:\href{https://arxiv.org/abs/1305.3683}{1305.3683} (2013).
 \bibitem{inverse} C.-M. Yoo, ``A Note on the Inverse Problem with LTB Universes,'' \emph{Prog. Theor. Phys.} \textbf{124}, 645--665 (2010), \href{https://doi.org/10.1143/PTP.124.645}{doi:10.1143/PTP.124.645}.
+\bibitem{bull} P. Bull, T. Clifton and P. G. Ferreira, ``The kSZ effect as a test of general radial inhomogeneity in LTB cosmology,'' \href{https://arxiv.org/abs/1108.2222}{arXiv:1108.2222} (2011).
+\bibitem{zibin} J. P. Zibin, ``Can decaying modes save void models for acceleration?,'' \emph{Phys. Rev. D} \textbf{84}, 123508 (2011), \href{https://doi.org/10.1103/PhysRevD.84.123508}{doi:10.1103/PhysRevD.84.123508}.
 \end{thebibliography}
 \end{document}
