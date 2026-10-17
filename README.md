@@ -1,7 +1,7 @@
-# Bang-time perturbations and redshift drift in parabolic LTB
+# Bang-time perturbations and redshift drift in LTB cosmology
 
 [![Paper: preprint v2.0](https://img.shields.io/badge/paper-preprint%20v2.0-1455B5?style=flat-square)](paper.pdf)
-[![Model: parabolic LTB](https://img.shields.io/badge/model-parabolic%20LTB-242A35?style=flat-square)](paper.tex)
+[![Models: LTB and Λ-LTB](https://img.shields.io/badge/models-LTB%20%2B%20%CE%9B--LTB-242A35?style=flat-square)](paper.tex)
 [![Reproduce: Python 3.10+](https://img.shields.io/badge/reproduce-Python%203.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](analysis.py)
 [![Manuscript: CC BY 4.0](https://img.shields.io/badge/manuscript-CC%20BY%204.0-596579?style=flat-square)](LICENSE)
 [![Code: MIT](https://img.shields.io/badge/code-MIT-596579?style=flat-square)](LICENSE)
